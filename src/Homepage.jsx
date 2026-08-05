@@ -14,6 +14,10 @@ export default function Homepage() {
         </div>
       </nav>
 
+      <div className="hero-name-track" aria-hidden="false">
+        <p className="hero-name">Barbara Borini</p>
+      </div>
+
       <div className="homepage-content">
         <section className="hero" aria-label="Hero">
           <h1 className="hero-portfolio">
@@ -22,10 +26,7 @@ export default function Homepage() {
             FOLIO
           </h1>
           <p className="hero-subtitle">UI/UX DESIGN</p>
-
-          <div className="hero-name">
-            <p>Barbara Borini</p>
-          </div>
+          <p className="hero-name-mobile">Barbara Borini</p>
         </section>
 
         <section className="about" aria-label="About me">

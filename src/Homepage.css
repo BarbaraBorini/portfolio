@@ -4,6 +4,7 @@
   --color-text-secondary: #555555;
   --max-width: 1440px;
   --page-padding: 56px;
+  --navbar-height: 164px;
 }
 
 .homepage {
@@ -23,7 +24,7 @@
   transform: translateX(-50%);
   width: 100%;
   max-width: var(--max-width);
-  height: 164px;
+  height: var(--navbar-height);
   z-index: 10;
   pointer-events: none;
 }
@@ -55,8 +56,8 @@
   width: 100%;
   max-width: var(--max-width);
   margin: 0 auto;
-  padding-top: 164px;
-  overflow: clip;
+  padding-top: var(--navbar-height);
+  overflow: visible;
 }
 
 /* ── Hero ── */
@@ -97,14 +98,22 @@
   text-align: center;
 }
 
-.hero-name {
+/* Sticky name — scrolls up with page, then locks centered in navbar */
+.hero-name-track {
   position: absolute;
-  bottom: 15%;
+  top: calc(var(--navbar-height) + var(--page-padding) + 28vh);
   left: 69%;
   transform: translateX(-50%);
+  bottom: 160px;
+  width: max-content;
+  z-index: 11;
+  pointer-events: none;
 }
 
-.hero-name p {
+.hero-name {
+  position: sticky;
+  top: calc((var(--navbar-height) - 1em) / 2);
+  margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
   font-size: clamp(32px, 4vw, 56px);
   font-weight: 900;
@@ -113,6 +122,11 @@
   color: var(--color-text-primary);
   opacity: 0.95;
   white-space: nowrap;
+  pointer-events: auto;
+}
+
+.hero-name-mobile {
+  display: none;
 }
 
 /* ── About ── */
@@ -288,12 +302,21 @@
     letter-spacing: 0.3em;
   }
 
-  .hero-name {
-    position: relative;
-    right: auto;
-    transform: none;
-    margin-top: 32px;
+  .hero-name-track {
+    display: none;
+  }
+
+  .hero-name-mobile {
+    display: block;
     align-self: flex-end;
+    margin-top: 32px;
+    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    color: var(--color-text-primary);
+    opacity: 0.95;
   }
 
   .contact {
