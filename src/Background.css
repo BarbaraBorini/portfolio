@@ -1,0 +1,84 @@
+/* Container positioned behind all page content */
+.bg-container {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: -1; /* Ensures it stays behind content */
+  overflow: hidden;
+
+  /* CRITICAL: Must be white for subtractive blending to work */
+  background-color: #ffffff; 
+  
+  /* Centers the overlapping circles */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  isolation: isolate;
+}
+
+/* Common circle styles */
+.circle {
+  position: absolute;
+  /* Adjust size based on reference (slightly smaller/taller) */
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+  
+  /* Subtractive Blending Property */
+
+  mix-blend-mode: multiply; 
+
+  
+  /* Smooth blur based on reference   ; */
+  
+
+  
+  /* Performance optimization for animation filter: blur(50px); */
+  will-change: transform;
+  opacity: 1;
+
+}
+
+/* 3. Cyan/Blue Circle (top) */
+.circle-cyan-top {
+  background-color: rgba(0, 255, 255, 1); /* Pure Cyan */
+  top: -160%; /* Large overlap with magenta */
+  animation: floatVertical 20s ease-in-out infinite;
+
+}
+
+/* 2. Magenta/Red Circle (Middle) */
+.circle-magenta {
+  background-color: rgba(255, 0, 255, 1); /* Hot Pink / Magenta */
+  top: -140%; /* Large overlap with yellow and cyan */
+  /* Different animation duration prevents synchronization */
+  animation: floatVertical 14s ease-in-out infinite reverse;
+}
+
+/* 1. Yellow Circle (Top) */
+.circle-yellow {
+  background-color: rgba(255, 255, 0, 1); /* Pure Yellow */
+  top: -120%;
+  /* Slower, subtle vertical float */
+  animation: floatVertical 18s ease-in-out infinite;
+}
+
+/* 3. Cyan/Blue Circle (Bottom) */
+.circle-cyan {
+  background-color: rgba(0, 255, 255, 1); /* Pure Cyan */
+  top: 70%; /* Large overlap with magenta */
+  animation: floatVertical 20s ease-in-out infinite;
+}
+
+/* Define the subtle vertical movement */
+@keyframes floatVertical {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    /* Gentle drift of 40px */
+    transform: translateY(40px);
+  }
+}
