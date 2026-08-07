@@ -2,6 +2,8 @@
 :root {
   --color-text-primary: #1a1a1a;
   --color-text-secondary: #555555;
+  --silver: #B6B8B5;
+  --pearl: #E6E8E6;
   --max-width: 1440px;
   --page-padding: 56px;
   --navbar-height: 164px;
@@ -13,7 +15,7 @@
   width: 100%;
   min-height: 100vh;
   padding-bottom: 160px;
-  color: var(--color-text-primary);
+  color: var(--silver);
 }
 
 /* ── Navbar ── */
@@ -39,7 +41,7 @@
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 1.8px;
-  color: var(--color-text-secondary);
+  color: var(--silver);
   pointer-events: auto;
 }
 
@@ -49,6 +51,7 @@
 
 /* ── Main content ── */
 .homepage-content {
+  position: relative;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -74,23 +77,23 @@
 .hero-portfolio {
   font-family: 'Inter', sans-serif;
   font-size: clamp(80px, 14vw, 200px);
-  font-weight: 400;
+  font-weight: 700;
   line-height: 0.73;
   text-align: right;
   width: 100%;
   max-width: 1328px;
-  color: transparent;
-  -webkit-text-stroke: 1.5px var(--color-text-primary);
-  paint-order: stroke fill;
-  filter: blur(2px);
+  color: var(--silver);
+  opacity: 10%;
+  filter: blur(1.6px);
   word-break: break-word;
   align-self: center;
+  mix-blend-mode: multiply;
 }
 
 .hero-subtitle {
   font-size: clamp(16px, 2.5vw, 30px);
   letter-spacing: clamp(24px, 5vw, 72px);
-  color: var(--color-text-primary);
+  color: var(--pearl);
   white-space: nowrap;
   filter: blur(1px);
   align-self: center;
@@ -102,8 +105,7 @@
 .hero-name-track {
   position: absolute;
   top: calc(var(--navbar-height) + var(--page-padding) + 28vh);
-  left: 69%;
-  transform: translateX(-50%);
+  right: var(--page-padding);
   bottom: 160px;
   width: max-content;
   z-index: 11;
@@ -119,7 +121,7 @@
   font-weight: 900;
   font-style: italic;
   line-height: 1;
-  color: var(--color-text-primary);
+  color: var(--pearl);
   opacity: 0.95;
   white-space: nowrap;
   pointer-events: auto;
@@ -231,7 +233,7 @@
 .contact-label span {
   font-size: 18px;
   letter-spacing: 1.8px;
-  color: var(--color-text-primary);
+  color: var(--silver);
   white-space: nowrap;
 }
 
@@ -242,15 +244,26 @@
   object-fit: fill;
 }
 
-.contact-item a {
+.contact-item a,
+.contact-copy {
   font-size: 18px;
   letter-spacing: 1.8px;
-  color: var(--color-text-primary);
+  color: var(--silver);
   white-space: nowrap;
   transition: opacity 0.2s;
 }
 
-.contact-item a:hover {
+.contact-copy {
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.contact-item a:hover,
+.contact-copy:hover {
   opacity: 0.7;
 }
 
@@ -263,7 +276,7 @@
   align-items: flex-start;
   font-size: 18px;
   letter-spacing: 1.8px;
-  color: var(--color-text-primary);
+  color: var(--silver);
   white-space: nowrap;
   pointer-events: auto;
 }
@@ -315,8 +328,7 @@
     font-weight: 900;
     font-style: italic;
     line-height: 1;
-    color: var(--color-text-primary);
-    opacity: 0.95;
+    color: var(--silver);
   }
 
   .contact {

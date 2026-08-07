@@ -7,9 +7,7 @@
   height: 100vh;
   z-index: -1; /* Ensures it stays behind content */
   overflow: hidden;
-  /* CRITICAL: Must be white for subtractive blending to work */
-  background-color: #ffffff; 
-  
+  background-color: #B6B8B5; 
   /* Centers the overlapping circles */
   display: flex;
   justify-content: center;
@@ -20,7 +18,7 @@
 /* Common circle styles */
 .circle {
   position: absolute;
-  width: 100%;
+  width: 130%;
   aspect-ratio: 1 / 1;
   border-radius: 50%;
 
@@ -30,7 +28,7 @@
   /* COMBINED FILTERS: 
      1. Applies SVG multiply in strict sRGB space
      2. Applies the visual blur */
-  filter: url(#multiply-srgb) blur(40px);
+  filter: url(#multiply-srgb) blur(80px);
 
   /* Performance optimization for animation */
   will-change: transform;
@@ -40,29 +38,29 @@
 /* 3. Cyan/Blue Circle (top) */
 .circle-cyan-top {
   background-color: rgba(0, 255, 255, 1); /* Pure Cyan */
-  top: -160%;
-  animation: floatVertical 20s ease-in-out infinite;
+  top: -180%;
+  animation: floatVertical 5s ease-in-out infinite;
 }
 
 /* 2. Magenta/Red Circle (Middle) */
 .circle-magenta {
-  background-color: rgba(255, 0, 255, 1); /* Hot Pink / Magenta */
-  top: -140%;
-  animation: floatVertical 14s ease-in-out infinite reverse;
+  background-color: rgba(255, 0, 255, 1); /* Magenta */
+  top: -70%;
+  animation: floatVertical 4s ease-in-out infinite reverse;
 }
 
 /* 1. Yellow Circle (Top) */
 .circle-yellow {
   background-color: rgba(255, 255, 0, 1); /* Pure Yellow */
-  top: -120%;
-  animation: floatVertical 18s ease-in-out infinite;
+  top: -60%;
+  animation: floatVertical 6s ease-in-out infinite;
 }
 
 /* 3. Cyan/Blue Circle (Bottom) */
-.circle-cyan {
+.circle-cyan-bottom {
   background-color: rgba(0, 255, 255, 1); /* Pure Cyan */
-  top: 70%;
-  animation: floatVertical 20s ease-in-out infinite;
+  top: 100%;
+  animation: floatVertical 8s ease-in-out infinite;
 }
 
 /* Define the subtle vertical movement */

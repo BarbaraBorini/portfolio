@@ -15,7 +15,7 @@ const AnimatedBackground = () => {
       <div className="circle circle-cyan-top" />
       <div className="circle circle-magenta" />
       <div className="circle circle-yellow" />
-      <div className="circle circle-cyan" />
+      <div className="circle circle-cyan-bottom" />
     </div>
   );
 };

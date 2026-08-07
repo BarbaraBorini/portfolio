@@ -1,10 +1,25 @@
+import { useState } from 'react';
 import './Homepage.css';
 
 const BASE = import.meta.env.BASE_URL;
+const EMAIL = 'borini.barbara@gmail.com';
+const PHONE = '+45 55214857';
 
 const ABOUT_TEXT = `Loren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsum `;
 
 export default function Homepage() {
+  const [copied, setCopied] = useState(null);
+
+  const copyToClipboard = async (text, id) => {
+    try {
+      await navigator.clipboard.writeText(text);
+      setCopied(id);
+      setTimeout(() => setCopied(null), 2000);
+    } catch {
+      setCopied(null);
+    }
+  };
+
   return (
     <div className="homepage">
       <nav className="navbar" aria-label="Site header">
@@ -14,11 +29,11 @@ export default function Homepage() {
         </div>
       </nav>
 
-      <div className="hero-name-track" aria-hidden="false">
-        <p className="hero-name">Barbara Borini</p>
-      </div>
-
       <div className="homepage-content">
+        <div className="hero-name-track" aria-hidden="false">
+          <p className="hero-name">Barbara Borini</p>
+        </div>
+
         <section className="hero" aria-label="Hero">
           <h1 className="hero-portfolio">
             PORT
@@ -55,7 +70,13 @@ export default function Homepage() {
                 <span>EMAIL</span>
                 <img src={`${BASE}assets/line-long.svg`} alt="" className="contact-line" />
               </div>
-              <a href="mailto:borini.barbara@gmail.com">borini.barbara@gmail.com</a>
+              <button
+                type="button"
+                className="contact-copy"
+                onClick={() => copyToClipboard(EMAIL, 'email')}
+              >
+                {copied === 'email' ? 'Copied!' : EMAIL}
+              </button>
             </div>
 
             <div className="contact-item">
@@ -63,17 +84,23 @@ export default function Homepage() {
                 <span>PHONE</span>
                 <img src={`${BASE}assets/line-short.svg`} alt="" className="contact-line" />
               </div>
-              <a href="tel:+4555214857">+45 55214857</a>
+              <button
+                type="button"
+                className="contact-copy"
+                onClick={() => copyToClipboard(PHONE, 'phone')}
+              >
+                {copied === 'phone' ? 'Copied!' : PHONE}
+              </button>
             </div>
           </div>
 
           <div className="contact-links">
-            <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
+            <a href="https://linkedin.com/in/barbara-borini/" target="_blank" rel="noopener noreferrer">
               LINKEDIN →
             </a>
             <span className="contact-divider">\</span>
             <a href={`${BASE}resume.pdf`} download>
-              Resume ↓
+              RESUME ↓
             </a>
           </div>
         </div>
