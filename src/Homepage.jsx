@@ -5,7 +5,8 @@ const BASE = import.meta.env.BASE_URL;
 const EMAIL = 'borini.barbara@gmail.com';
 const PHONE = '+45 55214857';
 
-const ABOUT_TEXT = `Loren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsumLoren  ipsum `;
+const ABOUT_TEXT = `I’m a Multimedia & UX Design student at Aarhus Business Academy, with an analytical heart and a deeply creative mind. As an INTP, I thrive at the intersection of logic and creativity—whether that’s building robust Figma design systems, structuring advanced interactive prototypes, or exploring design through fine art, fashion, and architecture.
+I look at UX design like a master building set: every component, variable, and interaction needs to connect seamlessly to create a complete, scalable experience. Focused on quality assurance and objective problem-solving, I love learning the rules of a system, and knowing precisely when and how to break them to innovate. ;) `;
 
 export default function Homepage() {
   const [copied, setCopied] = useState(null);
@@ -20,6 +21,10 @@ export default function Homepage() {
     }
   };
 
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
   return (
     <div className="homepage">
       <nav className="navbar" aria-label="Site header">
@@ -31,7 +36,9 @@ export default function Homepage() {
 
       <div className="homepage-content">
         <div className="hero-name-track" aria-hidden="false">
-          <p className="hero-name">Barbara Borini</p>
+          <button type="button" className="hero-name" onClick={scrollToTop}>
+            Barbara Borini
+          </button>
         </div>
 
         <section className="hero" aria-label="Hero">
@@ -41,13 +48,15 @@ export default function Homepage() {
             FOLIO
           </h1>
           <p className="hero-subtitle">UI/UX DESIGN</p>
-          <p className="hero-name-mobile">Barbara Borini</p>
+          <button type="button" className="hero-name-mobile" onClick={scrollToTop}>
+            Barbara Borini
+          </button>
         </section>
 
         <section className="about" aria-label="About me">
           <div className="about-inner">
             <div className="about-text">
-              <h2>About me</h2>
+              <h2>Get to know me</h2>
               <p>{ABOUT_TEXT}</p>
             </div>
             <div className="about-photo">
@@ -68,28 +77,38 @@ export default function Homepage() {
             <div className="contact-item">
               <div className="contact-label">
                 <span>EMAIL</span>
-                <img src={`${BASE}assets/line-long.svg`} alt="" className="contact-line" />
+                <span className="contact-line" aria-hidden="true" />
               </div>
               <button
                 type="button"
                 className="contact-copy"
                 onClick={() => copyToClipboard(EMAIL, 'email')}
               >
-                {copied === 'email' ? 'Copied!' : EMAIL}
+                <span className="contact-copy-text" style={{ visibility: copied === 'email' ? 'hidden' : 'visible' }}>
+                  {EMAIL}
+                </span>
+                <span className="contact-copy-text" style={{ visibility: copied === 'email' ? 'visible' : 'hidden' }}>
+                  Copied!
+                </span>
               </button>
             </div>
 
             <div className="contact-item">
               <div className="contact-label">
                 <span>PHONE</span>
-                <img src={`${BASE}assets/line-short.svg`} alt="" className="contact-line" />
+                <span className="contact-line" aria-hidden="true" />
               </div>
               <button
                 type="button"
                 className="contact-copy"
                 onClick={() => copyToClipboard(PHONE, 'phone')}
               >
-                {copied === 'phone' ? 'Copied!' : PHONE}
+                <span className="contact-copy-text" style={{ visibility: copied === 'phone' ? 'hidden' : 'visible' }}>
+                  {PHONE}
+                </span>
+                <span className="contact-copy-text" style={{ visibility: copied === 'phone' ? 'visible' : 'hidden' }}>
+                  Copied!
+                </span>
               </button>
             </div>
           </div>

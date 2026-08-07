@@ -41,7 +41,7 @@
   font-size: 18px;
   font-weight: 400;
   letter-spacing: 1.8px;
-  color: var(--silver);
+  color: var(--pearl);
   pointer-events: auto;
 }
 
@@ -75,15 +75,15 @@
 }
 
 .hero-portfolio {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Poppins', sans-serif;
   font-size: clamp(80px, 14vw, 200px);
   font-weight: 700;
   line-height: 0.73;
   text-align: right;
   width: 100%;
   max-width: 1328px;
-  color: var(--silver);
-  opacity: 10%;
+  color: var(--pearl);
+  opacity: 20%;
   filter: blur(1.6px);
   word-break: break-word;
   align-self: center;
@@ -91,7 +91,9 @@
 }
 
 .hero-subtitle {
+  font-family: 'Poppins', sans-serif;
   font-size: clamp(16px, 2.5vw, 30px);
+  font-weight: 700;
   letter-spacing: clamp(24px, 5vw, 72px);
   color: var(--pearl);
   white-space: nowrap;
@@ -116,7 +118,11 @@
   position: sticky;
   top: calc((var(--navbar-height) - 1em) / 2);
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(32px, 4vw, 56px);
   font-weight: 900;
   font-style: italic;
@@ -125,6 +131,11 @@
   opacity: 0.95;
   white-space: nowrap;
   pointer-events: auto;
+  transition: opacity 0.2s;
+}
+
+.hero-name:hover {
+  opacity: 0.7;
 }
 
 .hero-name-mobile {
@@ -149,12 +160,12 @@
   display: flex;
   flex-direction: column;
   gap: 32px;
-  color: var(--color-text-secondary);
+  color: var(--pearl);
   min-width: 0;
 }
 
 .about-text h2 {
-  font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+  font-family: 'Inter', sans-serif;
   font-size: clamp(36px, 4vw, 56px);
   font-weight: 900;
   font-style: italic;
@@ -170,7 +181,7 @@
 
 .about-photo {
   flex-shrink: 0;
-  width: 480px;
+  width: 460px;
   max-width: 100%;
   aspect-ratio: 1;
   overflow: hidden;
@@ -233,33 +244,39 @@
 .contact-label span {
   font-size: 18px;
   letter-spacing: 1.8px;
-  color: var(--silver);
+  color: var(--pearl);
   white-space: nowrap;
 }
 
 .contact-line {
   flex: 1;
-  height: 1px;
-  min-width: 40px;
-  object-fit: fill;
+  height: 1.6px;
+  min-width: 24px;
+  background-color: var(--pearl);
 }
 
 .contact-item a,
 .contact-copy {
   font-size: 18px;
   letter-spacing: 1.8px;
-  color: var(--silver);
+  color: var(--pearl);
   white-space: nowrap;
   transition: opacity 0.2s;
 }
 
 .contact-copy {
+  display: grid;
   background: none;
   border: none;
   padding: 0;
   font-family: inherit;
   cursor: pointer;
   text-align: left;
+}
+
+.contact-copy-text {
+  grid-area: 1 / 1;
+  white-space: nowrap;
 }
 
 .contact-item a:hover,
@@ -276,7 +293,7 @@
   align-items: flex-start;
   font-size: 18px;
   letter-spacing: 1.8px;
-  color: var(--silver);
+  color: var(--pearl);
   white-space: nowrap;
   pointer-events: auto;
 }
@@ -323,12 +340,21 @@
     display: block;
     align-self: flex-end;
     margin-top: 32px;
-    font-family: -apple-system, BlinkMacSystemFont, 'SF Pro Display', 'Inter', sans-serif;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
     font-size: clamp(32px, 4vw, 56px);
     font-weight: 900;
     font-style: italic;
     line-height: 1;
-    color: var(--silver);
+    color: var(--pearl);
+    transition: opacity 0.2s;
+  }
+
+  .hero-name-mobile:hover {
+    opacity: 0.7;
   }
 
   .contact {

@@ -12,10 +12,12 @@ const AnimatedBackground = () => {
       </svg>
 
       {/* Circle elements */}
-      <div className="circle circle-cyan-top" />
-      <div className="circle circle-magenta" />
-      <div className="circle circle-yellow" />
-      <div className="circle circle-cyan-bottom" />
+      <div className="circle circle-cyan cyan-one" />
+      <div className="circle circle-magenta magenta-one" />
+      <div className="circle circle-yellow yellow-one" />
+      <div className="circle circle-cyan cyan-two" />
+      <div className="circle circle-magenta magenta-two" />
+      <div className="circle circle-yellow yellow-two" />
     </div>
   );
 };
