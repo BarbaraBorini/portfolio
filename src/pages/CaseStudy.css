@@ -1,0 +1,250 @@
+/* Shared styling for every project case-study detail page. Project-specific
+   pages (src/pages/projects/*.jsx) only provide content — this file defines
+   the reusable "frame", typography, tags and image-pair building blocks. */
+
+.case-study {
+  width: 100%;
+  max-width: 1120px;
+}
+
+.case-frame {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 24px;
+  background-color: var(--pearl);
+  border: 1px solid #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 80px 0 rgba(228, 232, 247, 0.4);
+  padding: 112px 160px;
+}
+
+.case-logo {
+  width: 85px;
+  height: auto;
+}
+
+.case-body-content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+}
+
+/* ── Header ── */
+.case-header {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  width: 100%;
+}
+
+.case-title-block {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  width: 100%;
+}
+
+.case-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: clamp(32px, 3.4vw, 48px);
+  line-height: 1.25;
+  letter-spacing: -0.75px;
+  color: var(--black-ish);
+  margin: 0;
+}
+
+.case-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  align-items: center;
+}
+
+.case-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 12px;
+  border-radius: 8px;
+  background-color: #fff;
+  box-shadow: 0 0 12px 0 rgba(228, 232, 247, 0.8);
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.15px;
+  color: var(--black-ish);
+  white-space: nowrap;
+}
+
+.case-tag img {
+  width: 24px;
+  height: 24px;
+}
+
+.case-tag-divider {
+  width: 1px;
+  height: 24px;
+  background-color: #d9d9d9;
+  margin: 0 4px;
+}
+
+.case-meta {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.case-meta p {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+  letter-spacing: 0.15px;
+  line-height: 20px;
+  color: var(--dark-grey);
+}
+
+.case-meta strong {
+  font-weight: 600;
+}
+
+.case-divider {
+  width: 100%;
+  height: 1px;
+  border: none;
+  background-color: #e3e3e3;
+  margin: 0;
+}
+
+/* ── Content ── */
+.case-content {
+  display: flex;
+  flex-direction: column;
+  gap: 48px;
+  width: 100%;
+}
+
+.case-section {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 100%;
+  color: var(--black-ish);
+}
+
+.case-section--muted {
+  color: var(--dark-grey);
+}
+
+.case-section-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 23px;
+  letter-spacing: -0.25px;
+  line-height: 32px;
+  margin: 0;
+}
+
+.case-section-subtitle {
+  font-family: 'Inter', sans-serif;
+  font-weight: 600;
+  font-size: 16px;
+  letter-spacing: -0.25px;
+  line-height: 32px;
+  margin: 0;
+}
+
+.case-section p {
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+  margin: 0;
+}
+
+.case-section ul {
+  margin: 0;
+  padding-left: 24px;
+  font-family: 'Inter', sans-serif;
+  font-size: 16px;
+  line-height: 24px;
+}
+
+.case-section ul li + li {
+  margin-top: 8px;
+}
+
+.case-section strong {
+  font-weight: 600;
+}
+
+.case-section a {
+  text-decoration: underline;
+}
+
+.case-video {
+  width: 100%;
+  border-radius: 8px;
+  background-color: #000;
+  display: block;
+}
+
+.case-image {
+  width: 100%;
+  display: block;
+  border-radius: 4px;
+}
+
+.case-image--contain {
+  object-fit: contain;
+}
+
+.case-image--cover {
+  object-fit: cover;
+}
+
+.case-persona-image {
+  width: 100%;
+  max-width: 480px;
+  height: auto;
+  display: block;
+}
+
+.case-image-pair {
+  display: flex;
+  gap: 24px;
+  align-items: stretch;
+  width: 100%;
+}
+
+.case-image-pair > * {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Row of standalone screen mockups (e.g. Spilcafeen, CPHFW galleries) */
+.case-image-row {
+  display: flex;
+  gap: 24px;
+  align-items: flex-start;
+  justify-content: space-between;
+  width: 100%;
+}
+
+.case-image-row > img {
+  flex: 1;
+  min-width: 0;
+  width: auto;
+}
+
+@media (max-width: 900px) {
+  .case-frame {
+    padding: 56px var(--page-padding);
+  }
+
+  .case-image-pair,
+  .case-image-row {
+    flex-direction: column;
+  }
+}

@@ -1,0 +1,165 @@
+.project-page {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  color: var(--silver);
+}
+
+/* ── Navbar (static, not sticky) ── */
+.project-navbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  padding: var(--page-padding);
+}
+
+.project-navbar-headline {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 18px;
+  letter-spacing: 1.8px;
+  color: var(--pearl);
+}
+
+.project-navbar-headline p:last-child {
+  max-width: 358px;
+}
+
+.project-navbar-name {
+  margin: 0;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  color: var(--pearl);
+  opacity: 0.95;
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.project-navbar-name:hover {
+  opacity: 0.7;
+}
+
+/* ── Case study content ── */
+.project-content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 56px var(--page-padding) 112px;
+}
+
+/* ── Footer (static, not fixed) ── */
+.project-footer {
+  position: relative;
+  width: 100%;
+  min-height: 160px;
+  padding: 56px var(--page-padding);
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 32px;
+}
+
+.project-contact-details {
+  display: flex;
+  gap: 24px;
+  align-items: center;
+}
+
+.project-contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.project-contact-label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.project-contact-label span {
+  font-size: 18px;
+  letter-spacing: 1.8px;
+  color: var(--pearl);
+  white-space: nowrap;
+}
+
+.project-contact-line {
+  flex: 1;
+  height: 1.6px;
+  min-width: 24px;
+  background-color: var(--pearl);
+}
+
+.project-contact-copy {
+  display: grid;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  font-size: 18px;
+  letter-spacing: 1.8px;
+  color: var(--pearl);
+  white-space: nowrap;
+  cursor: pointer;
+  text-align: left;
+  transition: opacity 0.2s;
+}
+
+.project-contact-copy:hover {
+  opacity: 0.7;
+}
+
+.project-contact-copy-text {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+
+.project-contact-links {
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  align-self: center;
+  font-size: 18px;
+  letter-spacing: 1.8px;
+  color: var(--pearl);
+  white-space: nowrap;
+}
+
+.project-contact-links a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+
+.project-contact-links a:hover {
+  opacity: 0.7;
+}
+
+.project-contact-divider {
+  user-select: none;
+}
+
+@media (max-width: 900px) {
+  .project-content {
+    padding: 32px var(--page-padding) 56px;
+  }
+
+  .project-contact-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+}

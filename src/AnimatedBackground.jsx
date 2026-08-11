@@ -18,6 +18,9 @@ const AnimatedBackground = () => {
       <div className="circle circle-cyan cyan-two" />
       <div className="circle circle-magenta magenta-two" />
       <div className="circle circle-yellow yellow-two" />
+
+      {/* Film grain texture overlay */}
+      <div className="grain-overlay" aria-hidden="true" />
     </div>
   );
 };

@@ -7,9 +7,11 @@ export default defineConfig({
   plugins: [react()],
   server: {
     watch: {
-      // OneDrive/AV software create transient locked temp files (e.g. "~rofile.tmp")
-      // while syncing files under Documents; ignore them so the watcher doesn't crash.
-      ignored: ['**/public/assets/~*', '**/node_modules/**', '**/.git/**'],
+      // OneDrive/AV software transiently locks files (temp files, or freshly
+      // written/downloaded assets) while syncing under Documents, which
+      // crashes Vite's watcher with EBUSY. Static assets never need HMR
+      // anyway, so skip watching the whole folder rather than the file.
+      ignored: ['**/public/assets/**', '**/node_modules/**', '**/.git/**'],
     },
   },
 })
