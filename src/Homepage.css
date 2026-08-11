@@ -1,0 +1,485 @@
+/* Design tokens — adapted for light animated background */
+:root {
+  --silver: #B6B8B5;
+  --pearl: #E6E8E6;
+  --dark-grey: #525252;
+  --black-ish: #131313;
+  --max-width: 1440px;
+  --page-padding: 56px;
+  --navbar-height: 164px;
+}
+
+.homepage {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  min-height: 100vh;
+  /* Footer height (160px) plus extra clearance so the last project row
+     doesn't sit flush against the fixed footer when scrolled all the way
+     down. */
+  padding-bottom: 216px;
+  color: var(--silver);
+}
+
+/* ── Navbar ── */
+.navbar {
+  position: fixed;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width);
+  height: var(--navbar-height);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.navbar-headline {
+  position: absolute;
+  top: 56px;
+  left: var(--page-padding);
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  font-size: 18px;
+  letter-spacing: 1.8px;
+  color: var(--pearl);
+  pointer-events: auto;
+}
+
+.navbar-headline p:last-child {
+  max-width: 358px;
+}
+
+/* ── Main content ── */
+.homepage-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+  width: 100%;
+  max-width: var(--max-width);
+  margin: 0 auto;
+  padding-top: var(--navbar-height);
+  overflow: visible;
+}
+
+/* ── Hero ── */
+.hero {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: var(--page-padding);
+  min-height: 60vh;
+}
+
+.hero-portfolio {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(80px, 14vw, 200px);
+  font-weight: 700;
+  line-height: 0.73;
+  text-align: right;
+  width: 100%;
+  max-width: 1328px;
+  color: var(--pearl);
+  opacity: 10%;
+  filter: blur(1.6px);
+  word-break: break-word;
+  align-self: center;
+  mix-blend-mode: multiply;
+}
+
+.hero-subtitle {
+  font-family: 'Poppins', sans-serif;
+  font-size: clamp(16px, 2.5vw, 30px);
+  font-weight: 700;
+  letter-spacing: clamp(24px, 5vw, 72px);
+  color: var(--pearl);
+  white-space: nowrap;
+  filter: blur(1px);
+  align-self: center;
+  width: 100%;
+  text-align: center;
+}
+
+/* Sticky name — scrolls up with page, then locks centered in navbar */
+.hero-name-track {
+  position: absolute;
+  top: calc(var(--navbar-height) + var(--page-padding) + 28vh);
+  right: var(--page-padding);
+  bottom: 160px;
+  width: max-content;
+  z-index: 11;
+  pointer-events: none;
+}
+
+.hero-name {
+  position: sticky;
+  top: calc((var(--navbar-height) - 1em) / 2);
+  margin: 0;
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(32px, 4vw, 56px);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  color: var(--pearl);
+  opacity: 0.95;
+  white-space: nowrap;
+  pointer-events: auto;
+  transition: opacity 0.2s;
+}
+
+.hero-name:hover {
+  opacity: 0.7;
+}
+
+.hero-name-mobile {
+  display: none;
+}
+
+/* ── About ── */
+.about {
+  width: 100%;
+  padding: 112px;
+}
+
+.about-inner {
+  display: flex;
+  gap: 56px;
+  align-items: flex-start;
+  width: 100%;
+}
+
+.about-text {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  color: var(--pearl);
+  min-width: 0;
+}
+
+.about-text h2 {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  opacity: 0.95;
+}
+
+.about-copy {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.about-text p {
+  font-size: 18px;
+  line-height: 34px;
+}
+
+.about-text p strong {
+  font-weight: 600;
+}
+
+.about-photo {
+  flex-shrink: 0;
+  width: 390px;
+  max-width: 100%;
+  aspect-ratio: 1;
+  overflow: hidden;
+  border-radius: 8px;
+}
+
+.about-photo img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ── Projects ── */
+.projects {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  align-items: flex-start;
+  width: 100%;
+  padding: 56px 112px;
+}
+
+.projects-heading {
+  font-family: 'Inter', sans-serif;
+  font-size: clamp(28px, 3vw, 36px);
+  font-weight: 900;
+  font-style: italic;
+  line-height: 1;
+  color: var(--pearl);
+  opacity: 0.95;
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 32px 16px;
+  width: 100%;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  height: 360px;
+  width: 100%;
+}
+
+.project-card--clickable {
+  cursor: pointer;
+}
+
+.project-cover {
+  flex: 1;
+  min-height: 0;
+  width: 100%;
+  overflow: hidden;
+  background-color: rgba(230, 232, 230, 0.06);
+  border-radius: 8px;
+}
+
+.project-cover video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  transition: transform 0.35s ease, filter 0.35s ease;
+}
+
+.project-card--clickable:hover .project-cover video {
+  transform: scale(1.03);
+  filter: brightness(1.08);
+}
+
+.project-card--clickable:hover .project-title {
+  opacity: 0.7;
+}
+
+.project-title {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 1.4;
+  color: var(--pearl);
+  width: 100%;
+  transition: opacity 0.25s ease;
+}
+
+/* ── Contact footer ── */
+.contact {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: var(--max-width);
+  height: 160px;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.contact-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.contact-details {
+  position: absolute;
+  top: 56px;
+  left: var(--page-padding);
+  display: flex;
+  gap: 24px;
+  align-items: center;
+  pointer-events: auto;
+}
+
+.contact-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.contact-label {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  width: 100%;
+}
+
+.contact-label span {
+  font-size: 18px;
+  letter-spacing: 1.8px;
+  color: var(--pearl);
+  white-space: nowrap;
+}
+
+.contact-line {
+  flex: 1;
+  height: 1.6px;
+  min-width: 24px;
+  background-color: var(--pearl);
+}
+
+.contact-item a,
+.contact-copy {
+  font-size: 18px;
+  letter-spacing: 1.8px;
+  color: var(--pearl);
+  white-space: nowrap;
+  transition: opacity 0.2s;
+}
+
+.contact-copy {
+  display: grid;
+  background: none;
+  border: none;
+  padding: 0;
+  font-family: inherit;
+  cursor: pointer;
+  text-align: left;
+}
+
+.contact-copy-text {
+  grid-area: 1 / 1;
+  white-space: nowrap;
+}
+
+.contact-item a:hover,
+.contact-copy:hover {
+  opacity: 0.7;
+}
+
+.contact-links {
+  position: absolute;
+  top: 69px;
+  right: var(--page-padding);
+  display: flex;
+  gap: 16px;
+  align-items: flex-start;
+  font-size: 18px;
+  letter-spacing: 1.8px;
+  color: var(--pearl);
+  white-space: nowrap;
+  pointer-events: auto;
+}
+
+.contact-links a {
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: opacity 0.2s;
+}
+
+.contact-links a:hover {
+  opacity: 0.7;
+}
+
+.contact-divider {
+  user-select: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .homepage {
+    /* Footer isn't fixed on mobile, so no extra clearance is needed. */
+    padding-bottom: 0;
+  }
+
+  .about {
+    padding: 56px var(--page-padding);
+  }
+
+  .about-inner {
+    flex-direction: column;
+  }
+
+  .about-photo {
+    width: 100%;
+  }
+
+  .projects {
+    padding: 56px var(--page-padding);
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .hero-subtitle {
+    white-space: normal;
+    text-align: center;
+    letter-spacing: 0.3em;
+  }
+
+  .hero-name-track {
+    display: none;
+  }
+
+  .hero-name-mobile {
+    display: block;
+    align-self: flex-end;
+    margin-top: 32px;
+    background: none;
+    border: none;
+    padding: 0;
+    cursor: pointer;
+    font-family: 'Inter', sans-serif;
+    font-size: clamp(32px, 4vw, 56px);
+    font-weight: 900;
+    font-style: italic;
+    line-height: 1;
+    color: var(--pearl);
+    transition: opacity 0.2s;
+  }
+
+  .hero-name-mobile:hover {
+    opacity: 0.7;
+  }
+
+  .contact {
+    position: relative;
+    height: auto;
+    transform: none;
+    left: 0;
+    padding: 56px var(--page-padding);
+  }
+
+  .contact-details,
+  .contact-links {
+    position: static;
+  }
+
+  .contact-inner {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+}
+
+@media (max-width: 600px) {
+  .contact-details {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 16px;
+  }
+
+  .homepage-content {
+    gap: 120px;
+  }
+}

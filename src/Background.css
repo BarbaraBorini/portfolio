@@ -1,0 +1,114 @@
+/* Positioned absolutely within .App so it spans and scrolls with the
+   full page height, instead of staying pinned to the viewport. */
+.bg-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  min-height: 100vh;
+  z-index: -1; /* Ensures it stays behind content */
+  overflow: hidden;
+  background-color: #B6B8B5; 
+  /* Centers the overlapping circles */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  mix-blend-mode: multiply; 
+}
+
+/* Common circle styles */
+.circle {
+  position: absolute;
+  width: 120%;
+  aspect-ratio: 1 / 1;
+  border-radius: 50%;
+
+  /* Subtractive Blending Property */
+  mix-blend-mode: multiply; 
+
+  /* COMBINED FILTERS: 
+     1. Applies SVG multiply in strict sRGB space
+     2. Applies the visual blur */
+  filter: url(#multiply-srgb) blur(140px);
+
+  /* Performance optimization for animation */
+  will-change: transform;
+  opacity: 1;
+}
+
+/* Note: top offsets use vh (not %) so they stay anchored near the top of
+   the page regardless of how tall .bg-container grows with content — a
+   % here would resolve against the full document height instead of the
+   viewport, since the container no longer matches 100vh. */
+
+/* Cyan Circles */
+.circle-cyan {
+  background-color: rgba(0, 255, 255, 1); /* Pure Cyan */
+  animation: floatVertical 5s ease-in-out infinite;
+}
+
+/* Magenta Circles */
+.circle-magenta {
+  background-color: rgba(255, 0, 255, 1); /* Magenta */
+ 
+  animation: floatVertical 4s ease-in-out infinite reverse;
+}
+
+/* Yellow Circles */
+.circle-yellow {
+  background-color: rgba(255, 255, 0, 1); /* Pure Yellow */
+
+  animation: floatVertical 6s ease-in-out infinite;
+}
+
+/* Circles positions */
+
+.yellow-one {
+  top: -240vh;
+}
+.magenta-one {
+ top: -230vh;
+}
+
+.cyan-one {
+  top: -180vh;
+}
+
+.yellow-two {
+  top: 100vh;
+}
+
+.magenta-two {
+ top: 120vh;
+}
+
+
+.cyan-two {
+  top: 170vh;
+}
+
+/* Define the subtle vertical movement */
+@keyframes floatVertical {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(40px);
+  }
+}
+
+/* Film grain texture — a tiled SVG fractal-noise pattern blended over the
+   background to add subtle analog texture. Tiling (rather than scaling to
+   the container) keeps the grain a consistent fine size across the whole
+   scrollable page height. */
+.grain-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+  opacity: 0.7;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+}
