@@ -69,7 +69,7 @@ export default function ProjectLayout({ children }) {
             LINKEDIN →
           </a>
           <span className="project-contact-divider">\</span>
-          <a href={`${BASE}resume.pdf`} download>
+          <a href={`${BASE}assets/CV-Barbara-Borini.pdf`} download="CV - Barbara Borini.pdf">
             RESUME ↓
           </a>
         </div>

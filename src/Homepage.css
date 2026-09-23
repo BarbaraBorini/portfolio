@@ -144,6 +144,21 @@
   display: none;
 }
 
+/* Mobile-only grouping wrappers — `display: contents` on desktop so they
+   don't add extra boxes to the existing flex layout; the mobile media query
+   below turns them into real layout containers for the Figma mobile design. */
+.hero-landing-main {
+  display: contents;
+}
+
+.hero-watermark {
+  display: contents;
+}
+
+.hero-landing-contact {
+  display: none;
+}
+
 /* ── About ── */
 .about {
   width: 100%;
@@ -395,9 +410,36 @@
 
 /* ── Responsive ── */
 @media (max-width: 900px) {
+  /* Shorter fixed navbar footprint on mobile (single row, smaller type) —
+     also drives .homepage-content's top clearance below. */
+  :root {
+    --navbar-height: 104px;
+  }
+
   .homepage {
     /* Footer isn't fixed on mobile, so no extra clearance is needed. */
     padding-bottom: 0;
+  }
+
+  .navbar-headline {
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-start;
+    top: 40px;
+    left: 24px;
+    right: 24px;
+    gap: 12px;
+    font-size: clamp(8.5px, 2.6vw, 11px);
+    letter-spacing: 0.1em;
+  }
+
+  .navbar-headline p {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .navbar-headline p:last-child {
+    max-width: none;
   }
 
   .about {
@@ -420,10 +462,44 @@
     grid-template-columns: 1fr;
   }
 
+  /* ── Mobile landing screen (Figma: node 2220:3907) ──
+     The hero fills the space below the navbar as its own screen: watermark
+     + name in the middle, quick-access contact info pinned near the bottom. */
+  .hero {
+    min-height: calc(100vh - var(--navbar-height));
+    justify-content: space-between;
+    align-items: stretch;
+    padding: 40px 24px;
+    gap: 40px;
+  }
+
+  .hero-landing-main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 24px;
+    flex: 1;
+    min-height: 0;
+    width: 100%;
+  }
+
+  .hero-watermark {
+    display: block;
+    position: relative;
+    width: 100%;
+  }
+
+  .hero-portfolio {
+    font-size: 32vw;
+    filter: blur(2px);
+  }
+
   .hero-subtitle {
     white-space: normal;
     text-align: center;
-    letter-spacing: 0.3em;
+    letter-spacing: 24px;
+    filter: blur(0.5px);
   }
 
   .hero-name-track {
@@ -432,23 +508,48 @@
 
   .hero-name-mobile {
     display: block;
-    align-self: flex-end;
-    margin-top: 32px;
+    position: absolute;
+    /* Anchored from the right (not a left %) so it can never run past the
+       screen edge, regardless of device width or font-size. */
+    right: 0;
+    left: auto;
+    top: 46%;
+    max-width: 100%;
+    text-align: right;
     background: none;
     border: none;
     padding: 0;
     cursor: pointer;
     font-family: 'Inter', sans-serif;
-    font-size: clamp(32px, 4vw, 56px);
+    font-size: clamp(24px, 8vw, 40px);
     font-weight: 900;
     font-style: italic;
     line-height: 1;
     color: var(--pearl);
+    opacity: 0.95;
+    white-space: nowrap;
     transition: opacity 0.2s;
   }
 
   .hero-name-mobile:hover {
     opacity: 0.7;
+  }
+
+  .hero-landing-contact {
+    display: flex;
+    flex-direction: column;
+    gap: 17px;
+    width: 100%;
+  }
+
+  .hero-landing-contact .contact-links {
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .hero-landing-contact .contact-details {
+    justify-content: space-between;
+    width: 100%;
   }
 
   .contact {

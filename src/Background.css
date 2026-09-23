@@ -112,3 +112,45 @@
   background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
   background-repeat: repeat;
 }
+
+/* ── Mobile: pin the background to the viewport instead of the page ──
+   On mobile the background no longer scrolls with the content — it stays
+   fixed behind it, like the reference Figma background image, with circles
+   sized to the screen width instead of overflowing it. Positions below are
+   re-tuned (from vh-of-document to vh-of-viewport) so the same 6 circles
+   still blend into a full-height gradient within a single screen. */
+@media (max-width: 900px) {
+  .bg-container {
+    position: fixed;
+    height: 100vh;
+    min-height: 100vh;
+  }
+
+  .circle {
+    width: 100vw;
+  }
+
+  .yellow-one {
+    top: -62vh;
+  }
+
+  .magenta-one {
+    top: -56vh;
+  }
+
+  .cyan-one {
+    top: -42vh;
+  }
+
+  .yellow-two {
+    top: 78vh;
+  }
+
+  .magenta-two {
+    top: 68vh;
+  }
+
+  .cyan-two {
+    top: 56vh;
+  }
+}

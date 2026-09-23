@@ -145,15 +145,73 @@ export default function Homepage() {
         </div>
 
         <section className="hero" aria-label="Hero">
-          <h1 className="hero-portfolio">
-            PORT
-            <br />
-            FOLIO
-          </h1>
-          <p className="hero-subtitle">UI/UX DESIGN</p>
-          <button type="button" className="hero-name-mobile" onClick={scrollToTop}>
-            Barbara Borini
-          </button>
+          <div className="hero-landing-main">
+            <div className="hero-watermark">
+              <h1 className="hero-portfolio">
+                PORT
+                <br />
+                FOLIO
+              </h1>
+              <button type="button" className="hero-name-mobile" onClick={scrollToTop}>
+                Barbara Borini
+              </button>
+            </div>
+            <p className="hero-subtitle">UI/UX DESIGN</p>
+          </div>
+
+          {/* Mobile-only: quick-access contact preview, matching the Figma
+              mobile landing screen (the full end-of-page footer below still
+              has the same info once you scroll all the way down). */}
+          <div className="hero-landing-contact">
+            <div className="contact-links">
+              <a href="https://linkedin.com/in/barbara-borini/" target="_blank" rel="noopener noreferrer">
+                LINKEDIN →
+              </a>
+              <span className="contact-divider">\</span>
+              <a href={`${BASE}assets/CV-Barbara-Borini.pdf`} download="CV - Barbara Borini.pdf">
+                RESUME ↓
+              </a>
+            </div>
+            <div className="contact-details">
+              <div className="contact-item">
+                <div className="contact-label">
+                  <span>EMAIL</span>
+                  <span className="contact-line" aria-hidden="true" />
+                </div>
+                <button
+                  type="button"
+                  className="contact-copy"
+                  onClick={() => copyToClipboard(EMAIL, 'hero-email')}
+                >
+                  <span className="contact-copy-text" style={{ visibility: copied === 'hero-email' ? 'hidden' : 'visible' }}>
+                    {EMAIL}
+                  </span>
+                  <span className="contact-copy-text" style={{ visibility: copied === 'hero-email' ? 'visible' : 'hidden' }}>
+                    Copied!
+                  </span>
+                </button>
+              </div>
+
+              <div className="contact-item">
+                <div className="contact-label">
+                  <span>PHONE</span>
+                  <span className="contact-line" aria-hidden="true" />
+                </div>
+                <button
+                  type="button"
+                  className="contact-copy"
+                  onClick={() => copyToClipboard(PHONE, 'hero-phone')}
+                >
+                  <span className="contact-copy-text" style={{ visibility: copied === 'hero-phone' ? 'hidden' : 'visible' }}>
+                    {PHONE}
+                  </span>
+                  <span className="contact-copy-text" style={{ visibility: copied === 'hero-phone' ? 'visible' : 'hidden' }}>
+                    Copied!
+                  </span>
+                </button>
+              </div>
+            </div>
+          </div>
         </section>
 
         <section className="about" aria-label="About me">
@@ -274,7 +332,7 @@ export default function Homepage() {
               LINKEDIN →
             </a>
             <span className="contact-divider">\</span>
-            <a href={`${BASE}resume.pdf`} download>
+            <a href={`${BASE}assets/CV-Barbara-Borini.pdf`} download="CV - Barbara Borini.pdf">
               RESUME ↓
             </a>
           </div>
